@@ -60,11 +60,12 @@ function loadCards() {
     }
 }
 
-cardsArray = cardsArray.sort(() => 0.5 - Math.random())
-
+cardsArray = cardsArray.sort(() => 0.5 - Math.random());
+result = document.getElementById('result');
+result.textContent = 0;
 cardNameList = [];
 cardIdList = [];
-cardsWon = [];
+cardsWon = 0
 function flipCard() {
     cardId = this.getAttribute('id');
     cardName = cardsArray[cardId].name;
@@ -73,12 +74,21 @@ function flipCard() {
     this.setAttribute('src', cardsArray[cardId].location);
     setTimeout(()=> {
         if(cardNameList.length === 2) {
+            if(cardIdList[0] === cardIdList[1]) {
+                alert('You can\'t be picking the same card');
+                document.getElementById(cardIdList[0]).setAttribute('src', './images/blank.png');
+                cardIdList = []
+                cardNameList = [];
+                return
+            }
             if(cardNameList[0] === cardNameList[1]) {
                 alert("You matched!");
                 document.getElementById(cardIdList[0]).setAttribute('src', './images/white.png');
                 document.getElementById(cardIdList[1]).setAttribute('src', './images/white.png');
                 cardIdList = []
-                cardNameList = []
+                cardNameList = [];
+                cardsWon++
+                result.textContent = cardsWon;
             } else {
             alert('Sorry, you missed');
             document.getElementById(cardIdList[0]).setAttribute('src', './images/blank.png');
@@ -86,6 +96,8 @@ function flipCard() {
             cardIdList = [];
             cardNameList = [];
         }
+
+        
         }
 
 
