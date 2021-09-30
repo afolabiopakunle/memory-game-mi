@@ -55,8 +55,35 @@ function loadCards() {
         let card = document.createElement('img');
         card.setAttribute('src', './images/blank.png');
         card.setAttribute('id', i);
+        card.addEventListener('click', flipCard);
         grid.appendChild(card);
     }
 }
 
+cardNameList = [];
+cardIdList = [];
+function flipCard() {
+    cardId = this.getAttribute('id');
+    cardName = cardsArray[cardId].name;
+    cardNameList.push(cardName)
+    cardIdList.push(cardId)
+    this.setAttribute('src', cardsArray[cardId].location);
+    setTimeout(()=> {
+        if(cardNameList.length === 2) {
+            if(cardNameList[0] === cardNameList[1]) {
+                alert("You matched!");
+                document.getElementById(cardIdList[0]).setAttribute('src', './images/white.png');
+                document.getElementById(cardIdList[1]).setAttribute('src', './images/white.png');
+                cardIdList = []
+                cardNameList = []
+            }
+        } else {
+
+        }
+
+
+
+    }, 500)
+
+}
 loadCards();
