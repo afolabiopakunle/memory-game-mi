@@ -9,17 +9,22 @@ let cardsArray = [
     },
     {
         name: 'pizza',
-        location: './images/cheeseburger.png'
+        location: './images/pizza.png'
+    }, 
+    {
+        name: 'pizza',
+        location: './images/pizza.png'
     },
 ]
 
 let grid = document.getElementById('grid');
 
 function loadCards() {
-    let card = document.createElement('img');
-    card.setAttribute('src', './images/blank.png');
-    for(let i = 0; i < cardsArray.length; i++) {
-        grid.appendChild(card)
+    for (let i = 0; i < cardsArray.length; i++) {
+        let card = document.createElement('img');
+        card.setAttribute('src', './images/blank.png');
+        card.setAttribute('id', i);
+        grid.appendChild(card);
     }
 }
 
