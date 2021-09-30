@@ -1,0 +1,10 @@
+body {
+    font-family: sans-serif;
+}
+
+#grid {
+    display: flex;
+    height: 300px;
+    width: 400px;
+    flex-wrap: wrap;
+}
