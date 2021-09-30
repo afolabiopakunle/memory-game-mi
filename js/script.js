@@ -64,6 +64,7 @@ cardsArray = cardsArray.sort(() => 0.5 - Math.random())
 
 cardNameList = [];
 cardIdList = [];
+cardsWon = [];
 function flipCard() {
     cardId = this.getAttribute('id');
     cardName = cardsArray[cardId].name;
@@ -80,8 +81,10 @@ function flipCard() {
                 cardNameList = []
             } else {
             alert('Sorry, you missed');
-            document.getElementById(cardIdList[0]).setAttribute('src', './images/blank.png')
-            document.getElementById(cardIdList[1]).setAttribute('src', './images/blank.png')
+            document.getElementById(cardIdList[0]).setAttribute('src', './images/blank.png');
+            document.getElementById(cardIdList[1]).setAttribute('src', './images/blank.png');
+            cardIdList = [];
+            cardNameList = [];
         }
         }
 
