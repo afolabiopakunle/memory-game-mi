@@ -60,6 +60,8 @@ function loadCards() {
     }
 }
 
+cardsArray = cardsArray.sort(() => 0.5 - Math.random())
+
 cardNameList = [];
 cardIdList = [];
 function flipCard() {
@@ -76,9 +78,11 @@ function flipCard() {
                 document.getElementById(cardIdList[1]).setAttribute('src', './images/white.png');
                 cardIdList = []
                 cardNameList = []
-            }
-        } else {
-
+            } else {
+            alert('Sorry, you missed');
+            document.getElementById(cardIdList[0]).setAttribute('src', './images/blank.png')
+            document.getElementById(cardIdList[1]).setAttribute('src', './images/blank.png')
+        }
         }
 
 
