@@ -68,11 +68,19 @@ cardIdList = [];
 cardsWon = 0
 function flipCard() {
     cardId = this.getAttribute('id');
+    if(document.getElementById(cardId).getAttribute('src') === './images/white.png') {
+        alert('You can\t select the selected');
+        return;
+    }
     cardName = cardsArray[cardId].name;
     cardNameList.push(cardName)
     cardIdList.push(cardId)
     this.setAttribute('src', cardsArray[cardId].location);
     setTimeout(()=> {
+        if(document.getElementById(cardId).getAttribute('src') === './image/white.png') {
+            alert('You can\'t selected the selected');
+            return
+        }
         if(cardNameList.length === 2) {
             if(cardIdList[0] === cardIdList[1]) {
                 alert('You can\'t be picking the same card');
@@ -95,6 +103,8 @@ function flipCard() {
             document.getElementById(cardIdList[1]).setAttribute('src', './images/blank.png');
             cardIdList = [];
             cardNameList = [];
+            cardsWon--
+                result.textContent = cardsWon;
         }
 
         
@@ -102,7 +112,7 @@ function flipCard() {
 
 
 
-    }, 500)
+    }, 200)
 
 }
 loadCards();
